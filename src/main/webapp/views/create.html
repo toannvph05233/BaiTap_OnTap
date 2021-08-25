@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+
+    <h2>Create Student</h2>
+    <br>
+    <br>
+    <form method="post" enctype="multipart/form-data">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>BirthDay</th>
+            </tr>
+            </thead>
+            <tbody th:object="${student}">
+            <tr>
+
+                <td><input th:field="*{name}"></td>
+                <td><input th:field="*{address}"></td>
+                <td><input type="date" th:field="*{birthDay}"></td>
+
+            </tr>
+            <tr>
+                <th>Email</th>
+                <th>Phome</th>
+                <th>ClassRoom</th>
+            </tr>
+            <tr>
+                <td><input th:field="*{email}"></td>
+                <td><input th:field="*{phone}"></td>
+                <td>
+                    <select th:field="*{classRoom}">
+                        <option th:each="c : ${classRooms}" th:value="${c.id}" th:text="${c.name}"></option>
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+
+            <tr>
+                <td><input type="file" name="fileUpload"></td>
+            </tr>
+            <button type="submit" class="btn btn-warning"> Create</button>
+        </table>
+    </form>
+    <br>
+</div>
+</body>
+</html>
+
