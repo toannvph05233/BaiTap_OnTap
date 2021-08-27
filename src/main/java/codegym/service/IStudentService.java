@@ -15,4 +15,6 @@ public interface IStudentService {
 
     public void remove(Student student);
 
+    public Page<Student> findAllByName(String name,Pageable pageable);
+
 }
